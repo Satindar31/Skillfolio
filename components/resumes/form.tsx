@@ -39,7 +39,7 @@ export default function ResumeForm() {
     console.log("submitted");
   }
   return (
-    <form className="bg-transparent" onSubmit={onsubmit}>
+    <form className="bg-transparent" onSubmit={onsubmit?.call}>
       <Label>Name</Label>
       <Input placeholder="Jhon Doe" />
       <span className="m-2 sm:m-1" />

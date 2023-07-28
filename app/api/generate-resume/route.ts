@@ -1,11 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-import { Template, generate } from '@pdfme/generator';
+// import { Template, generate } from '@pdfme/generator';
 
 import { createUploadthing, utapi } from 'uploadthing/server'
 import { NextRequest, NextResponse } from "next/server";
 
-export default async function POST(req: NextRequest) {
+export async function POST(req: Request) {
     const {
         email,
         name,
