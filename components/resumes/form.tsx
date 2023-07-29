@@ -97,19 +97,19 @@ export default function ResumeForm() {
           <Label>Experience line 1</Label>
           <Input
             className="bg-transparent border-slate-800 active:border active:border-slate-800"
-            placeholder="I started my experience in ..."
+            placeholder="20WX-YZ in ..."
           />
 
           <Label>Experience line 2</Label>
           <Input
             className="bg-transparent border-slate-800 active:border active:border-slate-800"
-            placeholder="I started high school in ..."
+            placeholder="20AB-CD in ..."
           />
 
           <Label>Experience line 3</Label>
           <Input
             className="bg-transparent border-slate-800 active:border active:border-slate-800"
-            placeholder="I graduated high school in ..."
+            placeholder="20PQ-RS in ..."
           />
         </div>
       </div>

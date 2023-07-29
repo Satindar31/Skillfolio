@@ -7,6 +7,11 @@ const prisma = new PrismaClient()
  *
  * @param {string} email - The email for which to retrieve the posts.
  * @return {Promise<Array>} - A promise that resolves to an array of posts.
+ * @example
+ * ```typescript
+ * const resumes = await getAllPosts("example@example.com)
+ * console.log(resumes)
+ * ```
  */
 export default async function getAllPosts(email?: string) {
     const data = await prisma.resume.findMany({
