@@ -4,9 +4,7 @@ import { Template, generate } from '@pdfme/generator';
 import { NextRequest, NextResponse } from "next/server";
 import templateBasic from "@/templates/basic";
 
-export const config = {
-    runtime: "edge",
-};
+export const runtime = 'edge'
 
 export async function POST(req: Request) {
     const {
