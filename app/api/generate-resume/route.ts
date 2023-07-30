@@ -1,9 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-// import { Template, generate } from '@pdfme/generator';
-
-import { createUploadthing, utapi } from 'uploadthing/server'
+import { Template, generate } from '@pdfme/generator';
 import { NextRequest, NextResponse } from "next/server";
+import templateBasic from "@/templates/basic";
+
+export const config = {
+    runtime: "edge",
+};
 
 export async function POST(req: Request) {
     const {
@@ -39,9 +42,30 @@ export async function POST(req: Request) {
         previsousExperianceLine2: string;
         previsousExperianceLine3: string;
     } = await req.json();
-
+    console.log(aboutMeLine1)
+    const inputs = [{
+        "email": email,
+        "Name": name,
+        "Abt me L1": aboutMeLine1,
+        "Abt me L2": aboutMeLine2,
+        "Abt me L3": aboutMeLine3,
+        "Abt me L4": aboutMeLine4,
+        "Abt me L5": aboutMeLine5,
+        "EDU 1": educationLine1,
+        "EDU 2": educationLine2,
+        "EDU 3": educationLine3,
+        "EDU 4": educationLine4,
+        "EDU 5": educationLine5,
+        "PREV EXP 1": previsousExperianceLine1,
+        "PREV EXP 2": previsousExperianceLine2,
+        "PREV EXP 3": previsousExperianceLine3,
+    }];
     try {
-        
+        const pdf = await generate({
+            templateBasic,
+            inputs
+        })
+        console.log(pdf)
         // const resumeCreationResponse = await prisma.resume.create({
         //     data: {
         //         email,
@@ -57,8 +81,8 @@ export async function POST(req: Request) {
         console.log(err)
         return NextResponse.json({
             success: false,
-            error: err.message
-        })
+            error: err.message,
+        }, { status: 500 })
     }
 
 }
